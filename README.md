@@ -92,6 +92,28 @@ A Human Witness receipt is **not automatically an Action Warrant** and is **not 
 
 Trust, covenant, declaration, notice, agreement, or other instrument-specific semantics belong outside this repository. Human Witness can provide the encounter evidence those domains consume without deciding their legal meaning.
 
+## Experimental crossing field — SupaBardo
+
+Human Witness now carries one explicitly experimental design for the unresolved interval between encounter and durable consequence:
+
+**[SupaBardo — Crossing Field Design](docs/superpowers/specs/2026-08-25-supabardo-crossing-field-design.md)**
+
+Its law is:
+
+> **Store the crossing, not the canon.**
+
+SupaBardo proposes a bounded Supabase-backed crossing field for live presence, transient formation events, unresolved obligations, and deliberate decay. It remains an adapter/specimen under Human Witness unless repeated proofs demonstrate a genuinely reusable boundary.
+
+The distinction is mandatory:
+
+```text
+Supabase crossing state ≠ Human Witness receipt
+Human Witness receipt   ≠ legal validity
+Human Witness receipt   ≠ Corpus OS admission
+```
+
+No Supabase dependency is part of the Human Witness core contract merely because this experiment exists.
+
 ## Candidate flow
 
 ```text
@@ -153,7 +175,8 @@ Human-Witness/
 ├─ README.md
 ├─ docs/
 │  └─ superpowers/specs/
-│     └─ 2026-08-25-human-witness-design.md
+│     ├─ 2026-08-25-human-witness-design.md
+│     └─ 2026-08-25-supabardo-crossing-field-design.md
 ├─ schemas/
 │  └─ README.md
 ├─ core/
@@ -164,7 +187,7 @@ Human-Witness/
    └─ README.md
 ```
 
-The first commit intentionally establishes boundaries and vocabulary before choosing a runtime, persistence layer, signature technology, identity mechanism, or jurisdiction-specific profile.
+The first commits intentionally establish boundaries and vocabulary before choosing core persistence, signature technology, identity mechanism, or jurisdiction-specific profile. SupaBardo is a separately bounded adapter experiment, not a core persistence decision.
 
 ## First proof target
 
@@ -194,4 +217,4 @@ The proof passes only if downstream systems can consume that receipt **without H
 
 ## Status
 
-**v0.1 architecture seed.** No executable implementation, legal-validity claim, authentication scheme, digital-signature standard, durable ledger, or jurisdiction-specific profile is constituted by this repository yet.
+**v0.1 architecture seed.** No executable implementation, legal-validity claim, authentication scheme, digital-signature standard, durable ledger, or jurisdiction-specific profile is constituted by this repository yet. SupaBardo is documented as an experimental crossing-field design only.
