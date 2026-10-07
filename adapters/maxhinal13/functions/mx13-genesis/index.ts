@@ -1,5 +1,6 @@
 import postgres from 'npm:postgres@3.4.9'
 import { createHash, timingSafeEqual } from 'node:crypto'
+import { Buffer } from 'node:buffer'
 
 const REFS = { WITNESS:'edxoiynjspjtxjauxhlz', 'pantry-gate':'kbhqacsdvjsstzyplqij' }
 const NODES = [
