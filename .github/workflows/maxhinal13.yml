@@ -1,0 +1,55 @@
+name: MAXHINAL-13 bounded contract
+
+on:
+  push:
+    paths:
+      - 'adapters/maxhinal13/**'
+      - '.github/workflows/maxhinal13.yml'
+  pull_request:
+    paths:
+      - 'adapters/maxhinal13/**'
+      - '.github/workflows/maxhinal13.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-adapter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout reviewed implementation
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Use pinned Deno runtime
+        uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2
+        with:
+          deno-version: '2.5.4'
+      - name: Install locked adapter dependencies
+        working-directory: adapters/maxhinal13
+        run: npm ci --ignore-scripts
+      - name: Test signed protocol, refusals, simulated network and archived proof
+        working-directory: adapters/maxhinal13
+        run: npm test
+      - name: Check hosted Deno entrypoints and locked dependencies
+        working-directory: adapters/maxhinal13
+        run: deno check --frozen --config deno.json functions/mx13-{genesis,ingress,worker,status}/index.ts
+      - name: Reject tracked private identities and operator material
+        run: |
+          if git ls-files adapters/maxhinal13/.local | grep .; then
+            echo 'Ignored private identity material was committed' >&2
+            exit 1
+          fi
+      - name: Confirm local evidence does not claim hosted execution
+        working-directory: adapters/maxhinal13
+        run: |
+          node --experimental-strip-types --test test/archive.test.ts
+          node - <<'JS'
+          const fs=require('node:fs');
+          const e=JSON.parse(fs.readFileSync('evidence/mx13-001.local.json','utf8'));
+          if(e.hosted_project_calls_observed!==false || e.claim_limits.live_cross_project_http_proven!==false)
+            process.exit(1);
+          JS

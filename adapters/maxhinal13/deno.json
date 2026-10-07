@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "json-canonicalize": "npm:json-canonicalize@3.0.1",
+    "postgres": "npm:postgres@3.4.9"
+  },
+  "nodeModulesDir": "auto"
+}

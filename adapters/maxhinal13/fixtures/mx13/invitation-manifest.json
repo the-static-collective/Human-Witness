@@ -1,0 +1,10 @@
+{
+  "specimen": "MX13-001",
+  "title": "INVITATION",
+  "address": "sha256:af82b9a3b2d5eeb1ce3d58038b3415ca62f0815bd6f0a04662ec8cf5b773d171",
+  "byte_length": 670478,
+  "observed_name": "1000018575.png",
+  "detected_media_type": "image/jpeg",
+  "filename_media_type_mismatch": true,
+  "bytes_vendored_in_repository": false
+}
