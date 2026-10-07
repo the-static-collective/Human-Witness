@@ -29,6 +29,9 @@
 - Realtime, if added after the durable path passes, is visualization only. Reconstructibility may not depend on a WebSocket message.
 - MX13-001 source particular is INVITATION: SHA-256 af82b9a3b2d5eeb1ce3d58038b3415ca62f0815bd6f0a04662ec8cf5b773d171, 670478 bytes, observed filename 1000018575.png, detected media type image/jpeg. The original bytes are supplied externally at execution time and are not committed to this repository.
 - Security and performance advisors must be run on both projects after final DDL deployment and after the live adversarial pass.
+- COMMON GRAMMAR != COMMON MEANING.
+- ROUTER != JUDGE.
+- SPECIALIZATION = BOUNDED POWER; SPECIALIZATION != SUPERUSER.
 
 ## Review Focus
 
