@@ -1,0 +1,49 @@
+{
+  "schema": "maxhinal13.verification/v0",
+  "observed_at": "2026-10-07",
+  "adapter_source_commit": "e16ddfe",
+  "archive_integration_commit": "ddeb6b1",
+  "approved_base": "e7ce025",
+  "tests": {
+    "total": 75,
+    "passed": 68,
+    "skipped": 7,
+    "failed": 0,
+    "missing_media_skip_reason": "Original exact INVITATION is external and absent",
+    "node_versions": [
+      "22.16.0",
+      "24.19.0"
+    ]
+  },
+  "deno": {
+    "version": "2.5.4",
+    "frozen_lock": true,
+    "checked": [
+      "functions/mx13-genesis/index.ts",
+      "functions/mx13-ingress/index.ts",
+      "functions/mx13-worker/index.ts",
+      "functions/mx13-status/index.ts",
+      "scripts/operator.ts",
+      "scripts/replay-traces.ts"
+    ]
+  },
+  "dry_run": {
+    "noninteractive": true,
+    "environment_permissions": false,
+    "network_permissions": false,
+    "mutation": false
+  },
+  "cold_replay": {
+    "fresh_process": true,
+    "verified_sinew_crossings": 4,
+    "verified_sinew_holds": 4,
+    "verified_sinew_dispositions": 4,
+    "original_bytes_rehashed": false,
+    "live_inferred": false
+  },
+  "status_mode": {
+    "mutation": false,
+    "unconfigured_jwt_view": "UNKNOWN"
+  },
+  "live_authentication_executed": false
+}

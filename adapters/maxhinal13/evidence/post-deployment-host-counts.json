@@ -1,0 +1,19 @@
+{
+  "schema": "maxhinal13.host-count-observation/v0",
+  "observed_at": "2026-10-07",
+  "scope": "Counts only after deployment; no private JWK or raw capability read",
+  "hosts": [
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "node_keys": 0,
+      "public_peers": 0,
+      "active_operator_capabilities": 0
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "node_keys": 0,
+      "public_peers": 0,
+      "active_operator_capabilities": 0
+    }
+  ]
+}

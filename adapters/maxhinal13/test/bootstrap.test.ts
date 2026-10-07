@@ -63,3 +63,9 @@ test('sync only trusts pinned peer identities and forbids implicit rotation',asy
  await assert.rejects(()=>runBootstrap(sql,'WITNESS','sync-peers',FIXTURE_OPERATOR,async()=>({ok:true,status:200,json:async()=>changed})),/IDENTITY_FINGERPRINT_MISMATCH/);
  assert.equal(sql.peers.size,13);
 });
+
+test('unbootstrapped identity discovery stays incomplete instead of inventing live keys',async()=>{
+ const {readIdentity}=await import('../src/bootstrap.ts');const sql=new Sql();
+ await assert.rejects(()=>readIdentity(sql,'WITNESS'),/IDENTITY_BOOTSTRAP_INCOMPLETE/);
+ assert.equal(sql.identities.size,0);assert.equal(sql.peers.size,0);
+});

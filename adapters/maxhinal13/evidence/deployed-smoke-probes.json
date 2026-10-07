@@ -1,0 +1,97 @@
+{
+  "schema": "maxhinal13.deployed-smoke-probes/v0",
+  "observed_at": "2026-10-07T03:27:49.578789+00:00",
+  "authenticated_execution_attempted": false,
+  "observations": [
+    {
+      "host": "WITNESS",
+      "function": "mx13-genesis",
+      "method": "GET",
+      "status": 503,
+      "error": "IDENTITY_BOOTSTRAP_INCOMPLETE",
+      "public_nodes_returned": 0,
+      "gateway_message": null
+    },
+    {
+      "host": "WITNESS",
+      "function": "mx13-genesis",
+      "method": "POST",
+      "status": 401,
+      "error": "UNAUTHORIZED_OPERATOR",
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "WITNESS",
+      "function": "mx13-worker",
+      "method": "POST",
+      "status": 401,
+      "error": "UNAUTHORIZED_OPERATOR",
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "WITNESS",
+      "function": "mx13-ingress",
+      "method": "POST",
+      "status": 400,
+      "error": "INVALID_INGRESS_SCHEMA",
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "WITNESS",
+      "function": "mx13-status",
+      "method": "GET",
+      "status": 401,
+      "error": null,
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "pantry-gate",
+      "function": "mx13-genesis",
+      "method": "GET",
+      "status": 503,
+      "error": "IDENTITY_BOOTSTRAP_INCOMPLETE",
+      "public_nodes_returned": 0,
+      "gateway_message": null
+    },
+    {
+      "host": "pantry-gate",
+      "function": "mx13-genesis",
+      "method": "POST",
+      "status": 401,
+      "error": "UNAUTHORIZED_OPERATOR",
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "pantry-gate",
+      "function": "mx13-worker",
+      "method": "POST",
+      "status": 401,
+      "error": "UNAUTHORIZED_OPERATOR",
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "pantry-gate",
+      "function": "mx13-ingress",
+      "method": "POST",
+      "status": 400,
+      "error": "INVALID_INGRESS_SCHEMA",
+      "public_nodes_returned": null,
+      "gateway_message": null
+    },
+    {
+      "host": "pantry-gate",
+      "function": "mx13-status",
+      "method": "GET",
+      "status": 401,
+      "error": null,
+      "public_nodes_returned": null,
+      "gateway_message": null
+    }
+  ]
+}

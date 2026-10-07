@@ -4,9 +4,9 @@ Only WITNESS `edxoiynjspjtxjauxhlz` and pantry-gate `kbhqacsdvjsstzyplqij` are t
 
 ## Current boundary and the exact next step
 
-The executor has scoped management/read access and applied the additive MAXHINAL hardening migration. It does **not** have an authenticated CLI environment or either host's SQL credentials. The source archive also does not contain the original INVITATION image. Authenticated bootstrap, deployment of the replacement functions, two-host crossing, 13-node crossing, live SINEW, and live PNEUMA have **not** run.
+The executor has scoped management/read access and applied the additive MAXHINAL hardening migration. It does **not** have an authenticated CLI environment or either host's SQL credentials. The source archive also does not contain the original INVITATION image. The four reviewed functions are now deployed through the existing project-scoped management connection (genesis v3, other functions v1). Authenticated bootstrap, two-host crossing, 13-node crossing, live SINEW, and live PNEUMA have **not** run.
 
-The next step is to run **step 2 (deploy), then step 3 (bootstrap)** below inside an already authorized operator environment. Alternatively provide the executor only that environment's configuration location, without putting credentials in chat. Step 4 additionally requires the exact original image. The Constellation Rack visualization remains gated on verified two-host crossing, as issue #4 requires.
+The next step is to run **step 3 (bootstrap)** below inside an already authorized operator environment. Alternatively provide the executor only that environment's configuration location, without putting credentials in chat. Step 4 additionally requires the exact original image. The Constellation Rack visualization remains gated on verified two-host crossing, as issue #4 requires.
 
 ## 1. Review and prepare privately
 
@@ -38,7 +38,7 @@ Configure these **inside secure operator storage**, outside the checkout, with s
 
 The filename observed by the founding witness is `1000018575.png`; its bytes are JPEG/JFIF. Renaming or re-encoding is not a repair of the same particular. Never vendor these personal image bytes.
 
-The additive `supabase/migrations/20261007030054_maxhinal13_transport_hardening.sql` is already applied on both projects. It adds only capability expiry and MAXHINAL payload/backlog indexes. Do not run `db push` across unrelated migrations or replace existing app schemas. Existing genesis v2 remains deployed until step 2; its archived implementation does not enforce the new expiry column. **Deploy reviewed genesis before activating any expiring operator capability.**
+The additive `supabase/migrations/20261007030054_maxhinal13_transport_hardening.sql` is already applied on both projects. It adds only capability expiry and MAXHINAL payload/backlog indexes. Do not run `db push` across unrelated migrations or replace existing app schemas. Reviewed genesis v3 is deployed on both hosts and enforces expiry. The preexisting v2 implementation did not enforce this column; if reproducing from an older deployment, **deploy reviewed genesis before activating any expiring operator capability.**
 
 ## 2. Deploy the reviewed four functions
 

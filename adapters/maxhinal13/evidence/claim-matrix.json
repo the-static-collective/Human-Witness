@@ -48,8 +48,9 @@
     "each_host_node_keys": 0,
     "each_host_peers": 0,
     "each_host_active_operator_caps": 0,
-    "genesis_deployed_version": 2,
-    "reviewed_replacement_functions_deployed": false
+    "genesis_deployed_version": 3,
+    "reviewed_replacement_functions_deployed": true,
+    "status_gateway_jwt_verified": true
   },
   "cold_replay": {
     "earned": true,
@@ -65,5 +66,5 @@
     "implemented": false,
     "gate": "Issue #4: finish secure two-host crossing before visualization"
   },
-  "continue_at": "OPERATOR.md step 2 deploy, step 3 bootstrap; step 4 additionally requires exact original image"
+  "continue_at": "OPERATOR.md step 3 bootstrap; step 4 additionally requires exact original image"
 }

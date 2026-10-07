@@ -1,0 +1,53 @@
+{
+  "schema": "maxhinal13.edge-log-inspection/v0",
+  "window_start": "2026-10-07T03:26:00Z",
+  "window_end": "2026-10-07T03:32:00Z",
+  "claim_limit": "Partial ingested mesh request logs, no credentials, request headers, IPs or payloads selected. HTTP 503 on identity discovery corresponds to separately captured IDENTITY_BOOTSTRAP_INCOMPLETE with zero keys; no successful genesis or live crossing inferred.",
+  "hosts": [
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "result": [
+        {
+          "method": "GET",
+          "observations": 1,
+          "path": "/functions/v1/mx13-genesis",
+          "runtime_error": "EDGE_FUNCTION_ERROR",
+          "status": "503"
+        },
+        {
+          "method": "POST",
+          "observations": 1,
+          "path": "/functions/v1/mx13-genesis",
+          "runtime_error": "",
+          "status": "401"
+        }
+      ]
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "result": [
+        {
+          "method": "GET",
+          "observations": 1,
+          "path": "/functions/v1/mx13-genesis",
+          "runtime_error": "EDGE_FUNCTION_ERROR",
+          "status": "503"
+        },
+        {
+          "method": "GET",
+          "observations": 1,
+          "path": "/functions/v1/mx13-status",
+          "runtime_error": "UNAUTHORIZED_NO_AUTH_HEADER",
+          "status": "401"
+        },
+        {
+          "method": "POST",
+          "observations": 1,
+          "path": "/functions/v1/mx13-worker",
+          "runtime_error": "",
+          "status": "401"
+        }
+      ]
+    }
+  ]
+}
