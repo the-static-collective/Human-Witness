@@ -25,7 +25,7 @@
 - Node-private tables live outside public. Existing WITNESS and pantry-gate application schemas are not modified.
 - Edge Functions use SUPABASE_DB_URL with a single-connection postgres 3.4.9 client per isolate; no remote project secret/API key is ever sent across the network.
 - Public ingress uses verify_jwt=false only because it performs reLATTE P-256 verification, destination allowlisting, timestamp checks, payload hashing, and replay checks itself.
-- Operator/worker control uses a random 256-bit host capability stored only in the host-private schema; the raw capability is never committed or returned by public status endpoints.
+- Operator/worker control uses a random 256-bit host capability. The database stores only its SHA-256 hash; the raw capability stays only in ignored local operator material or an external secret manager and is never committed or returned by public status endpoints.
 - Realtime, if added after the durable path passes, is visualization only. Reconstructibility may not depend on a WebSocket message.
 - MX13-001 source particular is INVITATION: SHA-256 af82b9a3b2d5eeb1ce3d58038b3415ca62f0815bd6f0a04662ec8cf5b773d171, 670478 bytes, observed filename 1000018575.png, detected media type image/jpeg. The original bytes are supplied externally at execution time and are not committed to this repository.
 - Security and performance advisors must be run on both projects after final DDL deployment and after the live adversarial pass.
@@ -263,7 +263,7 @@ Commit message: feat(maxhinal13): encode thirteen constitutions
   - private per-node schemas mx13_n01 through mx13_n13 on their assigned hosts only.
   - mx13_host.node_keys(node_id, key_version, public_jwk, private_jwk, fingerprint, created_at).
   - mx13_host.peers(node_id, host_id, public_jwk, fingerprint, ingress_url, active).
-  - mx13_host.operator_capabilities(id, token_hash, raw_token, active, created_at) with no grants to anon/authenticated.
+  - mx13_host.operator_capabilities(id, token_hash, active, created_at) with no grants to anon/authenticated.
   - per-node payloads(address primary key, bytes bytea, byte_length, observed_name, detected_media_type, received_at).
   - per-node inbox(crossing_id primary key, source_node_id, state, hold_receipt_id, disposition_receipt_id, received_at, updated_at).
   - per-node outbox(crossing_id primary key, destination_node_id, envelope jsonb, payload_address, state, attempts, last_error, created_at, updated_at).
@@ -288,7 +288,7 @@ Both migrations create mx13_host plus only that host's assigned node schemas. Re
 
 - [ ] **Step 4: Implement identity generation tooling**
 
-generate-identities.ts generates exactly 13 extractable P-256 keypairs plus one random 256-bit operator capability per host, writes only under adapters/maxhinal13/.local/, and prints public fingerprints. .gitignore must exclude that directory.
+generate-identities.ts generates exactly 13 extractable P-256 node keypairs plus one random 256-bit operator capability per host, writes only under adapters/maxhinal13/.local/, and prints public fingerprints. .gitignore must exclude that directory. The raw operator capabilities never enter SQL; build-bootstrap-sql.ts emits only their SHA-256 hashes.
 
 build-bootstrap-sql.ts accepts the generated local JSON and emits two operator-reviewed INSERT scripts. It must refuse if any duplicate public-key fingerprint exists.
 
@@ -385,7 +385,7 @@ Commit message: feat(maxhinal13): enforce durable hold at ingress
 - [ ] **Step 1: Write failing worker tests**
 
 Pin that:
-- seed accepts only INVITATION bytes matching the manifest in MX13-001 mode;
+- seed accepts only INVITATION bytes matching the manifest in MX13-001 mode and creates a signed 01 -> 01 HTTP loopback crossing so node 01 also earns RECEIVE -> HOLD -> constitution before the alternating route begins;
 - each next crossing is signed by the current node, not the physical host;
 - REFUSE at node 08 and RETURN at node 05 can still create a separately signed route-forward crossing without changing their local disposition receipts;
 - same-host destination uses the same configured HTTP ingress URL, not direct store writes;
@@ -447,7 +447,7 @@ Expected: FAIL because mx13-route.ts is missing.
 
 - [ ] **Step 3: Implement the two-host probe mode**
 
-The script accepts --payload-path and refuses unless bytes match the INVITATION manifest when invoked with --specimen mx13-001.
+The script accepts --payload-path and refuses unless bytes match the INVITATION manifest when invoked with --specimen mx13-001. The full specimen begins by invoking node 01 through the ordinary HTTP ingress as a signed 01 -> 01 loopback; seed is not a privileged direct database admission.
 
 - [ ] **Step 4: Add CI for pure adapter tests**
 
@@ -489,7 +489,7 @@ Commit message: test(maxhinal13): prove bidirectional two-host crossing
 Pin the exact route:
 01 -> 02 -> 03 -> 04 -> 05 -> 06 -> 07 -> 08 -> 09 -> 10 -> 11 -> 12 -> 13.
 
-Assert 12 inter-node deliveries, 12 physical host-boundary changes, 13 HOLD receipts, 13 constitution results, unchanged source SHA at every node, 13 distinct signer fingerprints, and the Task 3 expected local results.
+Assert 13 ingress deliveries total: one signed 01 -> 01 loopback seed plus 12 inter-node deliveries; 12 physical host-boundary changes; 13 HOLD receipts; 13 constitution results; unchanged source SHA at every node; 13 distinct node signer fingerprints; and the Task 3 expected local results.
 
 - [ ] **Step 2: Run and confirm failure**
 
@@ -498,6 +498,8 @@ Run: cd adapters/maxhinal13 && npm test -- --test-name-pattern="MX13-001"
 Expected: FAIL until route orchestration/evidence aggregation is implemented.
 
 - [ ] **Step 3: Implement full-route orchestration**
+
+Begin with the signed 01 -> 01 loopback seed so node 01 uses the same ingress/HOLD path as every other node.
 
 At each node:
 - resolve any existing HOLD;
