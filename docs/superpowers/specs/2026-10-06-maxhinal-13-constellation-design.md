@@ -14,7 +14,7 @@ The experiment is not “make thirteen databases.”
 
 It is:
 
-> **How much real plurality can two physical machines carry without collapsing thirteen local constitutions into one hidden authority?**
+> **How much real plurality can two hosted project fault domains carry without collapsing thirteen local constitutions into one hidden authority?**
 
 ## Context
 
