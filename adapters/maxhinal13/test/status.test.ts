@@ -21,3 +21,11 @@ test('status returns only bounded public operations and unresolved HOLD stays un
     assert.equal(json.includes(leak),false,`leaked ${leak}`);
   }
 });
+
+test('safe operator status projects whitelisted fields and refuses foreign node identity',async()=>{
+ const {sanitizePublicStatus,readHostStatus}=await import('../src/status.ts');
+ const store=new FakeMeshStore();store.hostId='WITNESS';store.localNodeIds=['mx13:01-witness'];
+ const input={...await readHostStatus(store),private_jwk:{d:'SECRET'},operator_capability:'SECRET',payload_b64:'SECRET'};
+ assert.equal(JSON.stringify(sanitizePublicStatus(input,'WITNESS')).includes('SECRET'),false);
+ input.localNodeIds=['mx13:02-gate'];assert.throws(()=>sanitizePublicStatus(input,'WITNESS'),/INVALID_PUBLIC_STATUS/);
+});

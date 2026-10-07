@@ -1,3 +1,4 @@
+if (!process.argv.includes('--simulation-only')) throw Error('LOCAL_SIMULATION_ONLY_USE_HOST_OPERATOR_FOR_LIVE');
 import { mkdir, writeFile } from 'node:fs/promises';
 import { randomBytes, createHash } from 'node:crypto';
 import { generateP256KeyPair, publicKeyFingerprint } from '../src/relatte_v0.ts';

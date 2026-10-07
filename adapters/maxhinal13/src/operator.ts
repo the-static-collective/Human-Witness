@@ -12,6 +12,6 @@ export async function verifyOperatorCapability(presented:string,storedHash:strin
 }
 
 export async function authorizeHostOperator(sql:{unsafe(query:string,params?:unknown[]):Promise<any[]>},provided:string):Promise<void>{
-  const rows=await sql.unsafe('select token_hash from mx13_host.operator_capabilities where id=$1 and active=true',['default']);
+  const rows=await sql.unsafe('select token_hash from mx13_host.operator_capabilities where id=$1 and active=true and (expires_at is null or expires_at>now())',['default']);
   if(!(await verifyOperatorCapability(provided,rows[0]?.token_hash)))throw new Error('UNAUTHORIZED_OPERATOR');
 }

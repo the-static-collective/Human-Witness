@@ -32,6 +32,8 @@ export async function validateIdentityBundle(input:unknown,host:HostId):Promise<
     const publicKey={kty:key.kty,crv:key.crv,x:key.x,y:key.y};
     if(publicKey.kty!=='EC'||publicKey.crv!=='P-256'|| typeof publicKey.x!=='string'|| typeof publicKey.y!=='string')
       throw new Error('INVALID_IDENTITY_PUBLIC_KEY');
+    try { await crypto.subtle.importKey('jwk',publicKey,{name:'ECDSA',namedCurve:'P-256'},false,['verify']); }
+    catch { throw Error('INVALID_IDENTITY_PUBLIC_KEY'); }
     const actual=publicKeyFingerprint(publicKey);
     if(actual!==row.fingerprint)throw new Error('IDENTITY_FINGERPRINT_MISMATCH');
     if(seen.has(row.fingerprint))throw new Error('DUPLICATE_NODE_FINGERPRINT');

@@ -1,3 +1,4 @@
+import {edge,proposeEdge,decideEdge,type EdgeDecision} from './sinew.ts';
 import type {MeshStore} from './store.ts';
 import type {NodeId} from './model.ts';
 import {nodeDefinition,isNodeId} from './nodes.ts';
@@ -7,8 +8,8 @@ import {ROUTE,enqueueForward,pumpOne} from './worker.ts';
 import {verifyReceipt,publicKeyFingerprint} from './relatte_v0.ts';
 
 type Host='WITNESS'|'pantry-gate';
-export interface WorkerCommand { schema:'maxhinal13.worker/v0'; action:'seed'|'pump'|'advance';
-  payload_b64?:string;source_node_id?:NodeId;next_node_id?:NodeId;inbound_crossing_id?:string }
+export interface WorkerCommand { schema:'maxhinal13.worker/v0'; action:'seed'|'pump'|'advance'|'trace'|'probe-return'|'edge-propose'|'edge-disposition';
+  payload_b64?:string;source_node_id?:NodeId;next_node_id?:NodeId;inbound_crossing_id?:string;edge?:{reason:string;parent_ref:string|null};decision?:EdgeDecision;actor?:string }
 
 /** Host-scoped operator actions. Credentials are checked by the Edge wrapper. */
 export async function runWorkerCommand(store:MeshStore,host:Host,command:WorkerCommand,fetcher:typeof fetch):Promise<Record<string,unknown>>{
@@ -22,15 +23,28 @@ export async function runWorkerCommand(store:MeshStore,host:Host,command:WorkerC
   }
   const source=command.source_node_id;
   if(!isNodeId(source)||nodeDefinition(source).host!==host)throw new Error('SOURCE_NODE_NOT_ON_HOST');
+  if(command.action==='edge-propose'){
+    if(!isNodeId(command.next_node_id)||!command.edge)throw Error('INVALID_RELATION');
+    const proposed=await edge({source_node:source,destination_node:command.next_node_id,reason:command.edge.reason,parent_ref:command.edge.parent_ref});
+    const queued=await proposeEdge(store,proposed);return {schema:'maxhinal13.edge-proposal-result/v0',edge:proposed,crossing_id:queued.crossingId};
+  }
+  if(command.action==='edge-disposition'){
+    const receipt=await decideEdge(store,source,command.inbound_crossing_id!,command.decision!,command.actor!);return {schema:'maxhinal13.edge-decision-result/v0',receipt};
+  }
+  if(command.action==='trace'){
+    if(!/^relatte-crossing-v0:[0-9a-f]{64}$/.test(command.inbound_crossing_id??''))throw Error('INVALID_INBOUND_CROSSING_ID');
+    return {schema:'maxhinal13.transport-trace/v0',...await store.readTrace(source,command.inbound_crossing_id!)};
+  }
   if(command.action==='pump'){
     const outcome=await pumpOne(source,{store,fetch:fetcher});
     return {schema:'maxhinal13.worker-result/v0',action:'pump',source_node_id:source,
       crossing_id:outcome.crossingId,ok:outcome.ok,error:outcome.error??null,
       destination_node_id:outcome.destinationNodeId??null};
   }
-  if(command.action!=='advance')throw new Error('UNKNOWN_WORKER_ACTION');
+  if(command.action!=='advance'&&command.action!=='probe-return')throw new Error('UNKNOWN_WORKER_ACTION');
   const index=ROUTE.indexOf(source);
-  if(index<0||index===ROUTE.length-1||command.next_node_id!==ROUTE[index+1])
+  const roundTrip=command.action==='probe-return';
+  if(roundTrip ? (source!==ROUTE[1]||command.next_node_id!==ROUTE[0]) : (index<0||index===ROUTE.length-1||command.next_node_id!==ROUTE[index+1]))
     throw new Error('ROUTE_NEXT_NODE_MISMATCH');
   if(!/^relatte-crossing-v0:[0-9a-f]{64}$/.test(command.inbound_crossing_id??''))
     throw new Error('INVALID_INBOUND_CROSSING_ID');
@@ -42,8 +56,8 @@ export async function runWorkerCommand(store:MeshStore,host:Host,command:WorkerC
   if(!receipt||!(await verifyReceipt(receipt)))throw new Error('INVALID_LOCAL_RECEIPT');
   const storedKey=await store.loadNodeKey(source);
   if(publicKeyFingerprint(receipt.signing.public_key)!==storedKey.fingerprint)throw new Error('LOCAL_RECEIPT_KEY_MISMATCH');
-  const queued=await enqueueForward(source,command.next_node_id!,inbound.dispositionReceiptId,index+1,store);
-  return {schema:'maxhinal13.worker-result/v0',action:'advance',source_node_id:source,
+  const queued=await enqueueForward(source,command.next_node_id!,inbound.dispositionReceiptId,roundTrip?0:index+1,store);
+  return {schema:'maxhinal13.worker-result/v0',action:command.action,source_node_id:source,
     destination_node_id:queued.destinationNodeId,crossing_id:queued.crossingId,outbox_state:queued.state,
     parent_receipt_id:inbound.dispositionReceiptId};
 }

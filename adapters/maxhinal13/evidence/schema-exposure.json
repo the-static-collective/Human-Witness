@@ -1,0 +1,196 @@
+{
+  "observed_at": "2026-10-07",
+  "scope": "Actual PG privileges, both existing hosts; no private values read",
+  "hosts": [
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "rows": [
+        {
+          "schema": "mx13_host",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_host",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n01",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n01",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n03",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n03",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n05",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n05",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n07",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n07",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n09",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n09",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n11",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n11",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n13",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n13",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        }
+      ]
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "rows": [
+        {
+          "schema": "mx13_host",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_host",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n02",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n02",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n04",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n04",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n06",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n06",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n08",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n08",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n10",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n10",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n12",
+          "role": "anon",
+          "usage": false,
+          "accessible_tables": 0
+        },
+        {
+          "schema": "mx13_n12",
+          "role": "authenticated",
+          "usage": false,
+          "accessible_tables": 0
+        }
+      ]
+    }
+  ]
+}

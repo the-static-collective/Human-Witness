@@ -1,3 +1,4 @@
+import {pulse,POLL_INTERVAL_MS} from '../../src/pneuma.ts';
 import postgres from 'npm:postgres@3.4.9';
 import { PostgresMeshStore } from '../../src/store.ts';
 import { readHostStatus } from '../../src/status.ts';
@@ -13,8 +14,25 @@ if(!dbUrl)throw new Error('MISSING_LOCAL_DB_URL');
 const sql=postgres(dbUrl,{max:1,idle_timeout:5,connect_timeout:10,prepare:false,ssl:'require'});
 const store=new PostgresMeshStore(sql,HOST,NODE_DEFINITIONS.filter(n=>n.host===HOST).map(n=>n.id));
 
+const boot=crypto.randomUUID();let epoch=0;let lastPulseAt=0;let cachedPulses:any[]=[];let pulseWork:Promise<any[]>|null=null;
 Deno.serve(async(req:Request)=>{
   if(req.method!=='GET')return Response.json({error:'METHOD_NOT_ALLOWED'},{status:405});
-  try {return Response.json(await readHostStatus(store),{headers:{'Cache-Control':'no-store'}});}
+  try {
+    const status=await readHostStatus(store);
+    if(new URL(req.url).searchParams.get('pulse')==='1'){
+      if(Date.now()-lastPulseAt>=POLL_INTERVAL_MS){
+        if(!pulseWork){const nextEpoch=++epoch;
+          pulseWork=(async()=>{const observations:any[]=[];
+            for(const node of NODE_DEFINITIONS.filter(n=>n.host===HOST)){
+              try{observations.push(await pulse(store,node.id,boot,nextEpoch));}catch{observations.push({node_id:node.id,observation:'UNKNOWN'});}
+            }
+            return observations;
+          })();
+        }
+        try{cachedPulses=await pulseWork;lastPulseAt=Date.now();}finally{pulseWork=null;}
+      }
+      return Response.json({...status,pulses:cachedPulses,poll_interval_ms:POLL_INTERVAL_MS},{headers:{'Cache-Control':'no-store'}});
+    }
+    return Response.json(status,{headers:{'Cache-Control':'no-store'}});}
   catch {return Response.json({error:'STATUS_UNAVAILABLE'},{status:503,headers:{'Cache-Control':'no-store'}});}
 });

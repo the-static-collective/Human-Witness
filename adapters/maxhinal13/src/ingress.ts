@@ -1,7 +1,9 @@
+import {keyMaterial} from './worker.ts';
+import {validateEdge} from './sinew.ts';
 import type { CrossingEnvelopeV0, NodeId, ReceiptV0, P256KeyMaterial } from './model.ts';
 import type { MeshStore, StoredNodeKey } from './store.ts';
 import { isNodeId, nodeDefinition } from './nodes.ts';
-import { verifyCrossingEnvelope, publicKeyFingerprint, sealReceipt } from './relatte_v0.ts';
+import { verifyCrossingEnvelope, publicKeyFingerprint, sealReceipt, verifyReceipt } from './relatte_v0.ts';
 import { verifyPayload, assertFreshTimestamp, sha256Address } from './payload.ts';
 import { evaluateConstitution, type ConstitutionContext, type ConstitutionResult } from './constitutions.ts';
 
@@ -24,12 +26,6 @@ export interface IngressDeps {
   evaluate?: (ctx: ConstitutionContext) => ConstitutionResult;
 }
 
-async function keysFromStored(record: StoredNodeKey): Promise<P256KeyMaterial> {
-  if (!record.privateJwk?.d) throw new Error('NODE_PRIVATE_KEY_MISSING');
-  const privateKey=await crypto.subtle.importKey('jwk',record.privateJwk,{name:'ECDSA',namedCurve:'P-256'},false,['sign']);
-  const publicKey=await crypto.subtle.importKey('jwk',record.publicJwk,{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
-  return {privateKey,publicKey,publicKeyJwk:record.publicJwk};
-}
 function receiptDraft(envelope:CrossingEnvelopeV0,dest:NodeId,kind:string,semanticEffect:string,pre:unknown,post:unknown,descendants:string[],note:string,at:string,extension:Record<string,unknown>):Record<string,unknown>{
   return {
     schema:'relatte.receipt/v0',crossing_id:envelope.crossing_id,world_id:dest,receiver_particular:envelope.source_particular,
@@ -59,7 +55,15 @@ export async function handleIngress(req: IngressRequestV0, deps: IngressDeps): P
   if (!peer || !peer.active) throw new Error('UNKNOWN_SOURCE');
   if (!(await verifyCrossingEnvelope(e))) throw new Error('INVALID_SIGNATURE');
   if (publicKeyFingerprint(e.signing.public_key)!==peer.fingerprint) throw new Error('SOURCE_KEY_MISMATCH');
+  if((e.requested_effect as {destination_disposition?:unknown}|null)?.destination_disposition!=='local'||e.capability_ref!==null)throw Error('ROUTER_CANNOT_ADMIT');
   const {bytes,address}=await verifyPayload(e,req.payload_b64);
+  if(e.declared_kind==='SINEW_PROPOSED_EDGE'){
+    const proposal=await validateEdge(bytes,source,dest), proof=(e.extensions?.sinew as {parent_receipt?:ReceiptV0}|undefined)?.parent_receipt;
+    if(proposal.created_at!==e.created_at)throw Error('RELATION_TIME_MISMATCH');
+    if(JSON.stringify(e.parents)!==JSON.stringify(proposal.parent_ref?[proposal.parent_ref]:[])||e.source_history_head!==proposal.parent_ref)throw Error('RELATION_PARENT_SCOPE_MISMATCH');
+    if(proposal.parent_ref&&(!proof||(proof.extensions.mx13 as {stage?:string}|undefined)?.stage!=='LOCAL_DISPOSITION'||proof.receipt_id!==proposal.parent_ref||proof.world_id!==source||!(await verifyReceipt(proof))||publicKeyFingerprint(proof.signing.public_key)!==peer.fingerprint))throw Error('RELATION_PARENT_PROOF_INVALID');
+    if(!proposal.parent_ref&&proof!=null)throw Error('RELATION_PARENT_PROOF_INVALID');
+  }
   let localKey:StoredNodeKey;
   try { localKey=await deps.store.loadNodeKey(dest); }
   catch { throw new Error('UNKNOWN_DESTINATION'); }
@@ -68,7 +72,7 @@ export async function handleIngress(req: IngressRequestV0, deps: IngressDeps): P
   if (existing?.state==='RESOLVED') return existingResponse(deps.store,dest,existing);
   const now=(deps.now??(()=>new Date()))();
   if (!existing) assertFreshTimestamp(e.created_at,now);
-  const keys=await keysFromStored(localKey);
+  const keys=await keyMaterial(localKey,dest);
   const ref=e.payload_refs[0] as any;
   let holdReceipt:ReceiptV0;
   if (existing) {
@@ -86,6 +90,9 @@ export async function handleIngress(req: IngressRequestV0, deps: IngressDeps): P
     }
   }
 
+  if(e.declared_kind==='SINEW_PROPOSED_EDGE'){
+    return {crossing_id:e.crossing_id,hold_receipt:holdReceipt,state:'HOLD',replayed:!!existing};
+  }
   const result=(deps.evaluate??evaluateConstitution)({
     nodeId:dest,envelope:e,payloadAddress:address,observedFilename:ref.observed_name??'unnamed',
     detectedMediaType:ref.media_type??'application/octet-stream',priorReceiptIds:e.parents.filter((x:any)=>typeof x==='string'),

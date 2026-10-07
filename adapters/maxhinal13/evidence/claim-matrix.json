@@ -1,0 +1,69 @@
+{
+  "schema": "maxhinal13.claim-matrix/v0",
+  "observed_at": "2026-10-07",
+  "source_integration": {
+    "earned": true,
+    "archive": "MAXHINAL-13-source-and-proof.zip",
+    "approved_base": "e7ce025",
+    "integration_commit": "ddeb6b1",
+    "intervening_commits_preserved": true
+  },
+  "claims": {
+    "local_only": {
+      "earned": true,
+      "archived_crossings": 13,
+      "archived_holds": 13,
+      "archived_dispositions": 13,
+      "new_sinew_crossings": 4,
+      "new_sinew_holds": 4,
+      "new_sinew_dispositions": 4,
+      "original_invitation_rehashed_this_run": false
+    },
+    "live_two_host": {
+      "earned": false,
+      "reason": "No scoped authenticated operator configuration; no live node identities; original INVITATION bytes absent"
+    },
+    "live_thirteen_node": {
+      "earned": false,
+      "reason": "Requires earned live two-host and exact INVITATION"
+    },
+    "sinew_live": {
+      "earned": false,
+      "simulation_only": true
+    },
+    "pulse_observed": {
+      "earned": false,
+      "observer_tests_only": true
+    },
+    "host_outage_tested": {
+      "earned": false,
+      "simulated_transport_loss_tested": true
+    }
+  },
+  "actual_host_observations": {
+    "genesis_unauthorized_http_repeated_denial": true,
+    "schema_privilege_denial": true,
+    "maxhinal_only_hardening_migration_applied": true,
+    "advisors_rerun": true,
+    "each_host_node_keys": 0,
+    "each_host_peers": 0,
+    "each_host_active_operator_caps": 0,
+    "genesis_deployed_version": 2,
+    "reviewed_replacement_functions_deployed": false
+  },
+  "cold_replay": {
+    "earned": true,
+    "fresh_process": true,
+    "realtime_required": false,
+    "browser_required": false,
+    "database_required": false,
+    "network_observation_inferred": false,
+    "evidence": "sinew-001.simulation.json",
+    "report": "sinew-001.cold-replay.json"
+  },
+  "constellation_rack": {
+    "implemented": false,
+    "gate": "Issue #4: finish secure two-host crossing before visualization"
+  },
+  "continue_at": "OPERATOR.md step 2 deploy, step 3 bootstrap; step 4 additionally requires exact original image"
+}

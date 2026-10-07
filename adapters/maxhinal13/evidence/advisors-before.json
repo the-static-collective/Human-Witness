@@ -1,0 +1,883 @@
+{
+  "observed_at": "2026-10-07T03:00:24Z",
+  "projects": {
+    "edxoiynjspjtxjauxhlz": {
+      "security": {
+        "lints": []
+      },
+      "performance": {
+        "lints": [
+          {
+            "name": "unindexed_foreign_keys",
+            "title": "Unindexed foreign keys",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+            "count": 14,
+            "findings": [
+              {
+                "detail": "Table \\`mx13_n01.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n01",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n01.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n01",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n03.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n03",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n03.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n03",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n05.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n05",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n05.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n05",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n07.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n07",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n07.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n07",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n09.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n09",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n09.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n09",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n11.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n11",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n11.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n11",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n13.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n13",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Table \\`mx13_n13.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n13",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              }
+            ]
+          },
+          {
+            "name": "unused_index",
+            "title": "Unused Index",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Detects if an index has never been used and may be a candidate for removal.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+            "count": 12,
+            "findings": [
+              {
+                "detail": "Index \\`witness_recordings_room_verse_idx\\` on table \\`public.witness_recordings\\` has not been used",
+                "metadata": {
+                  "name": "witness_recordings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`witness_rooms_created_by_idx\\` on table \\`public.witness_rooms\\` has not been used",
+                "metadata": {
+                  "name": "witness_rooms",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`witness_room_members_user_id_idx\\` on table \\`public.witness_room_members\\` has not been used",
+                "metadata": {
+                  "name": "witness_room_members",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`witness_recordings_reader_user_idx\\` on table \\`public.witness_recordings\\` has not been used",
+                "metadata": {
+                  "name": "witness_recordings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`witness_recordings_supersedes_idx\\` on table \\`public.witness_recordings\\` has not been used",
+                "metadata": {
+                  "name": "witness_recordings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n01_constitution_events_crossing_idx\\` on table \\`mx13_n01.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n01"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n03_constitution_events_crossing_idx\\` on table \\`mx13_n03.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n03"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n05_constitution_events_crossing_idx\\` on table \\`mx13_n05.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n05"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n07_constitution_events_crossing_idx\\` on table \\`mx13_n07.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n07"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n09_constitution_events_crossing_idx\\` on table \\`mx13_n09.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n09"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n11_constitution_events_crossing_idx\\` on table \\`mx13_n11.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n11"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              },
+              {
+                "detail": "Index \\`mx13_n13_constitution_events_crossing_idx\\` on table \\`mx13_n13.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n13"
+                },
+                "observed_at": "2026-10-07T03:00:24.704Z"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "kbhqacsdvjsstzyplqij": {
+      "security": {
+        "lints": [
+          {
+            "name": "rls_enabled_no_policy",
+            "title": "RLS Enabled No Policy",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "count": 17,
+            "findings": [
+              {
+                "detail": "Table \\`pantry.analysis\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "analysis",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.analysis_artifacts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "analysis_artifacts",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.batch_items\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "batch_items",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.batches\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "batches",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.derivations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "derivations",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.intake_proposals\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "intake_proposals",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.memberships\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "memberships",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.pantry_catalog\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "pantry_catalog",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.receipts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "receipts",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.relationships\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "relationships",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.screening_runs\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "screening_runs",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.screening_summary\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "screening_summary",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.semantic_observations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "semantic_observations",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.semantic_provider_config\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "semantic_provider_config",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.specimens\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "specimens",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.tags\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "tags",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              },
+              {
+                "detail": "Table \\`pantry.visual_fingerprints\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "visual_fingerprints",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.448Z"
+              }
+            ]
+          }
+        ]
+      },
+      "performance": {
+        "lints": [
+          {
+            "name": "unindexed_foreign_keys",
+            "title": "Unindexed foreign keys",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+            "count": 12,
+            "findings": [
+              {
+                "detail": "Table \\`mx13_n02.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n02",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n02.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n02",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n04.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n04",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n04.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n04",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n06.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n06",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n06.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n06",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n08.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n08",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n08.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n08",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n10.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n10",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n10.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n10",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n12.inbox\\` has a foreign key \\`inbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "inbox",
+                  "type": "table",
+                  "schema": "mx13_n12",
+                  "fkey_name": "inbox_payload_address_fkey",
+                  "fkey_columns": [
+                    7
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Table \\`mx13_n12.outbox\\` has a foreign key \\`outbox_payload_address_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "outbox",
+                  "type": "table",
+                  "schema": "mx13_n12",
+                  "fkey_name": "outbox_payload_address_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              }
+            ]
+          },
+          {
+            "name": "unused_index",
+            "title": "Unused Index",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Detects if an index has never been used and may be a candidate for removal.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+            "count": 21,
+            "findings": [
+              {
+                "detail": "Index \\`specimens_media_kind_idx\\` on table \\`pantry.specimens\\` has not been used",
+                "metadata": {
+                  "name": "specimens",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`specimens_status_idx\\` on table \\`pantry.specimens\\` has not been used",
+                "metadata": {
+                  "name": "specimens",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`specimens_source_provider_idx\\` on table \\`pantry.specimens\\` has not been used",
+                "metadata": {
+                  "name": "specimens",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`specimens_created_at_idx\\` on table \\`pantry.specimens\\` has not been used",
+                "metadata": {
+                  "name": "specimens",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`analysis_result_gin_idx\\` on table \\`pantry.analysis\\` has not been used",
+                "metadata": {
+                  "name": "analysis",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`tags_lookup_idx\\` on table \\`pantry.tags\\` has not been used",
+                "metadata": {
+                  "name": "tags",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`memberships_pantry_idx\\` on table \\`pantry.memberships\\` has not been used",
+                "metadata": {
+                  "name": "memberships",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`analysis_artifacts_kind_idx\\` on table \\`pantry.analysis_artifacts\\` has not been used",
+                "metadata": {
+                  "name": "analysis_artifacts",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`screening_summary_status_idx\\` on table \\`pantry.screening_summary\\` has not been used",
+                "metadata": {
+                  "name": "screening_summary",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`screening_summary_worldseed_idx\\` on table \\`pantry.screening_summary\\` has not been used",
+                "metadata": {
+                  "name": "screening_summary",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`screening_summary_vspantry_idx\\` on table \\`pantry.screening_summary\\` has not been used",
+                "metadata": {
+                  "name": "screening_summary",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`semantic_observations_lookup_idx\\` on table \\`pantry.semantic_observations\\` has not been used",
+                "metadata": {
+                  "name": "semantic_observations",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`semantic_observations_analysis_idx\\` on table \\`pantry.semantic_observations\\` has not been used",
+                "metadata": {
+                  "name": "semantic_observations",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`visual_fingerprints_dhash_idx\\` on table \\`pantry.visual_fingerprints\\` has not been used",
+                "metadata": {
+                  "name": "visual_fingerprints",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`visual_fingerprints_analysis_idx\\` on table \\`pantry.visual_fingerprints\\` has not been used",
+                "metadata": {
+                  "name": "visual_fingerprints",
+                  "type": "table",
+                  "schema": "pantry"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`mx13_n02_constitution_events_crossing_idx\\` on table \\`mx13_n02.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n02"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`mx13_n04_constitution_events_crossing_idx\\` on table \\`mx13_n04.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n04"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`mx13_n06_constitution_events_crossing_idx\\` on table \\`mx13_n06.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n06"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`mx13_n08_constitution_events_crossing_idx\\` on table \\`mx13_n08.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n08"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`mx13_n10_constitution_events_crossing_idx\\` on table \\`mx13_n10.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n10"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              },
+              {
+                "detail": "Index \\`mx13_n12_constitution_events_crossing_idx\\` on table \\`mx13_n12.constitution_events\\` has not been used",
+                "metadata": {
+                  "name": "constitution_events",
+                  "type": "table",
+                  "schema": "mx13_n12"
+                },
+                "observed_at": "2026-10-07T03:00:24.590Z"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "claim_limit": "read-only advisor observation; not a LIVE crossing proof"
+}

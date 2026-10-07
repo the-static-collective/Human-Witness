@@ -36,7 +36,10 @@ jobs:
         run: npm test
       - name: Check hosted Deno entrypoints and locked dependencies
         working-directory: adapters/maxhinal13
-        run: deno check --frozen --config deno.json functions/mx13-{genesis,ingress,worker,status}/index.ts
+        run: deno check --frozen --config deno.json functions/mx13-{genesis,ingress,worker,status}/index.ts scripts/operator.ts scripts/replay-traces.ts
+      - name: Prove bootstrap dry-run needs no environment or network permission
+        working-directory: adapters/maxhinal13
+        run: deno run --no-prompt --frozen --config deno.json scripts/operator.ts bootstrap --dry-run
       - name: Reject tracked private identities and operator material
         run: |
           if git ls-files adapters/maxhinal13/.local | grep .; then
@@ -52,4 +55,20 @@ jobs:
           const e=JSON.parse(fs.readFileSync('evidence/mx13-001.local.json','utf8'));
           if(e.hosted_project_calls_observed!==false || e.claim_limits.live_cross_project_http_proven!==false)
             process.exit(1);
+          JS
+
+      - name: Reject private fields in exported evidence
+        working-directory: adapters/maxhinal13
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const forbidden=new Set(['d','private_jwk','password','token','raw_token','service_role','payload_b64','bytes']);
+          function scan(value) {
+            if(value&&typeof value==='object')for(const [key,child] of Object.entries(value)) {
+              if(forbidden.has(key))throw new Error('PRIVATE_EVIDENCE_FIELD:'+key);
+              scan(child);
+            }
+          }
+          for(const name of fs.readdirSync('evidence').filter(n=>n.endsWith('.json')))
+            scan(JSON.parse(fs.readFileSync('evidence/'+name,'utf8')));
           JS

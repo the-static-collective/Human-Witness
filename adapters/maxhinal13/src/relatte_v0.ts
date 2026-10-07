@@ -66,7 +66,7 @@ function validateJson(value: unknown, seen=new WeakSet<object>(), depth=0): void
     seen.delete(value);
   }
 }
-function canonicalize(value: unknown): string {
+export function canonicalize(value: unknown): string {
   validateJson(value);
   if (value === null || typeof value !== 'object') {
     const s=JSON.stringify(value); if (s===undefined) throw new Error('CANONICALIZATION_FAILED'); return s;

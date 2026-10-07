@@ -1,3 +1,4 @@
+if (!process.argv.includes('--simulation-only')) throw Error('LOCAL_SIMULATION_ONLY_USE_HOST_OPERATOR_FOR_LIVE');
 import { readFile, writeFile } from 'node:fs/promises';
 const base=new URL('../.local/',import.meta.url);
 const data=JSON.parse(await readFile(new URL('identities.json',base),'utf8'));
