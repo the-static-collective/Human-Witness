@@ -1,0 +1,33 @@
+{
+  "verified_crossings": 4,
+  "verified_holds": 4,
+  "verified_dispositions": 4,
+  "unresolved": [],
+  "ancestry": {
+    "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207": [
+      "relatte-receipt-v0:3ebc94ae7265a7f23a9a221250dbb0ad39dbc10e889a36fdee611edaf9b3ee67",
+      "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62"
+    ],
+    "relatte-receipt-v0:bb4d10b1729813c0ebc583d40032fb4978ef7ab50b8c739b99771f77e66ae5af": [
+      "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+      "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2"
+    ],
+    "relatte-receipt-v0:61b8db13d9db230c7945902002c722199e753469b1509d7a162f9f63d72f81dd": [
+      "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+      "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2"
+    ],
+    "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab": [
+      "relatte-receipt-v0:6dd89b68786ae4d70f70d2007dc0d181565652a65fc561da08183e9d6a3488a7",
+      "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+      "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207"
+    ],
+    "relatte-receipt-v0:b2be50ee3580866f30fd1046c4aebcc093d1371e303ce34cf39cf383e3f1088f": [
+      "relatte-receipt-v0:223b1453cd8dd3605c88e3395e2c2b07d9557cef342fc3c3a78fb9a9deafe08c",
+      "relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+      "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab"
+    ]
+  },
+  "live_two_host_proven": false,
+  "live_thirteen_node_proven": false,
+  "source_bytes_rehashed": false
+}

@@ -1,0 +1,724 @@
+{
+  "schema": "maxhinal13.sinew-simulation/v0",
+  "observed_at": "2026-10-07T03:18:57.096Z",
+  "traces": [
+    {
+      "node_id": "mx13:01-witness",
+      "host_id": "WITNESS",
+      "signed_crossing": {
+        "schema": "relatte.crossing-envelope/v0",
+        "protocol_version": "0",
+        "source_particular": "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5",
+        "source_world": "mx13:01-witness",
+        "source_history_head": null,
+        "parents": [],
+        "declared_kind": "MX13_TWO_WORLD_PROBE",
+        "payload_refs": [
+          {
+            "address": "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5",
+            "byte_length": 43,
+            "role": "particular",
+            "media_type": "text/plain",
+            "observed_name": "synthetic-probe.txt"
+          }
+        ],
+        "requested_effect": {
+          "destination_disposition": "local"
+        },
+        "capability_ref": null,
+        "privacy_policy": null,
+        "audience_policy": {
+          "destination": "mx13:01-witness"
+        },
+        "return_address": "mx13:01-witness",
+        "created_at": "2026-10-07T03:18:57.026Z",
+        "extensions": {
+          "mx13": {
+            "route_index": 1
+          }
+        },
+        "crossing_id": "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "Qx2ifYZ-GDfzt1wtpCDduo9cDDAMg6olj5g8BVN5s9_6ma-hTt4dH2QVmv_iFLVB06KmKkE4rg03rrATD7btRQ",
+          "domain": "relatte.crossing-signature/v0"
+        }
+      },
+      "signed_hold": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62",
+        "world_id": "mx13:01-witness",
+        "receiver_particular": "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5",
+        "kind": "MX13_HOLD",
+        "semantic_effect": "none",
+        "contract_ref": "maxhinal13.constitution/v0",
+        "pre_state_ref": "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62",
+        "post_state_ref": "mx13:hold:relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62",
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5"
+        ],
+        "note": "RECEIVE -> HOLD; destination disposition is null",
+        "created_at": "2026-10-07T03:18:57.068Z",
+        "extensions": {
+          "mx13": {
+            "stage": "HOLD",
+            "destination_disposition": null,
+            "mandatory_hold": true,
+            "authority": "none"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:3ebc94ae7265a7f23a9a221250dbb0ad39dbc10e889a36fdee611edaf9b3ee67",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "qF2r9qJ_QPVHTEJy7Hv7iTOxIiQ7xRmmXSAqIdapEeGrJZFX1H5DamS22wPVeIXYWxjO3_96ppW4A-EagqtImA",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "signed_disposition": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62",
+        "world_id": "mx13:01-witness",
+        "receiver_particular": "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5",
+        "kind": "MX13_FORWARD",
+        "semantic_effect": "witness-only",
+        "contract_ref": "maxhinal13.constitution/v0",
+        "pre_state_ref": "relatte-receipt-v0:3ebc94ae7265a7f23a9a221250dbb0ad39dbc10e889a36fdee611edaf9b3ee67",
+        "post_state_ref": null,
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5"
+        ],
+        "note": "observed attributable arrival; no downstream judgment",
+        "created_at": "2026-10-07T03:18:57.068Z",
+        "extensions": {
+          "mx13": {
+            "stage": "LOCAL_DISPOSITION",
+            "disposition": "FORWARD",
+            "law": "WITNESS != JUDGE",
+            "route_forward_allowed": true,
+            "authority": "destination-local-only",
+            "descendant_specs": []
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "JtWksA_uEkYuGc_Hdom8WvFguxTPMO_a5tsfvkyQp9TohZ_msmAAGmBfSK9rM4A3LG35Aojj6dpcfOomCpA18A",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "attempts": [],
+      "relation_observations": []
+    },
+    {
+      "node_id": "mx13:02-gate",
+      "host_id": "pantry-gate",
+      "signed_crossing": {
+        "schema": "relatte.crossing-envelope/v0",
+        "protocol_version": "0",
+        "source_particular": "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c",
+        "source_world": "mx13:01-witness",
+        "source_history_head": null,
+        "parents": [],
+        "declared_kind": "SINEW_PROPOSED_EDGE",
+        "payload_refs": [
+          {
+            "address": "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c",
+            "byte_length": 406,
+            "role": "particular",
+            "media_type": "application/json",
+            "observed_name": "proposed-edge.json"
+          }
+        ],
+        "requested_effect": {
+          "destination_disposition": "local"
+        },
+        "capability_ref": null,
+        "privacy_policy": null,
+        "audience_policy": {
+          "destination": "mx13:02-gate"
+        },
+        "return_address": "mx13:01-witness",
+        "created_at": "2026-10-07T03:18:57.029Z",
+        "extensions": {
+          "sinew": {
+            "edge_id": "sinew-edge-v0:88c86489be84b3491f5652ad692bc05d4aa8de4a7feeb969bc74fe5909a4cf31",
+            "proposal_is_not_acceptance": true,
+            "parent_receipt": null
+          }
+        },
+        "crossing_id": "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "AM7FAFl77p_lXfdqnFiTZA9Cu0h3ecoyrgdlW4xJzis4s13ehpHqqtxBSY-EZoZ1DDIPvoTRIRsD6wP02C7UMg",
+          "domain": "relatte.crossing-signature/v0"
+        }
+      },
+      "signed_hold": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2",
+        "world_id": "mx13:02-gate",
+        "receiver_particular": "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c",
+        "kind": "MX13_HOLD",
+        "semantic_effect": "none",
+        "contract_ref": "maxhinal13.constitution/v0",
+        "pre_state_ref": "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2",
+        "post_state_ref": "mx13:hold:relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2",
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c"
+        ],
+        "note": "RECEIVE -> HOLD; destination disposition is null",
+        "created_at": "2026-10-07T03:18:57.055Z",
+        "extensions": {
+          "mx13": {
+            "stage": "HOLD",
+            "destination_disposition": null,
+            "mandatory_hold": true,
+            "authority": "none"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+            "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+          },
+          "signature": "8-1T3X0GOWtTINRGaqfY6aUiRp_2IIwHjOgG8GLZ4FKAucj3ui7wNf5PvN07jXoG0fXvyrrTJhZzgYQC8Vaqig",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "signed_disposition": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2",
+        "world_id": "mx13:02-gate",
+        "receiver_particular": "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c",
+        "kind": "MX13_REFUSE",
+        "semantic_effect": "destination-local-relation-only",
+        "contract_ref": "SINEW-001",
+        "pre_state_ref": "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+        "post_state_ref": null,
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c"
+        ],
+        "note": "explicit destination operator decision; actor declaration is not identity authentication",
+        "created_at": "2026-10-07T03:18:57.064Z",
+        "extensions": {
+          "mx13": {
+            "stage": "LOCAL_DISPOSITION",
+            "disposition": "REFUSE",
+            "route_forward_allowed": true
+          },
+          "sinew": {
+            "edge_id": "sinew-edge-v0:88c86489be84b3491f5652ad692bc05d4aa8de4a7feeb969bc74fe5909a4cf31",
+            "decision": "REFUSE",
+            "actor": "local operator",
+            "scope": "bounded-relation-evidence",
+            "authority": "destination-local-relation-only"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:61b8db13d9db230c7945902002c722199e753469b1509d7a162f9f63d72f81dd",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+            "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+          },
+          "signature": "RzUW-j0O9qhZAqG-6MtFJKBEpZIjq0eacySj468qz10w27yv6SILI3OH-woFClQ-N5-JXWz74RFRX4-7p3wLrA",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "attempts": [],
+      "relation_observations": [
+        {
+          "schema": "relatte.receipt/v0",
+          "crossing_id": "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2",
+          "world_id": "mx13:02-gate",
+          "receiver_particular": "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c",
+          "kind": "MX13_EDGE_HOLD",
+          "semantic_effect": "none",
+          "contract_ref": "SINEW-001",
+          "pre_state_ref": "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+          "post_state_ref": null,
+          "descendant_refs": [],
+          "residual_refs": [
+            "sha256:e0bab57589084b1ce4fd044dc587016be1230c7e7d7c4406fc40022e6e800e1c"
+          ],
+          "note": "explicit destination operator decision; actor declaration is not identity authentication",
+          "created_at": "2026-10-07T03:18:57.062Z",
+          "extensions": {
+            "mx13": {
+              "stage": "RELATION_DISPOSITION",
+              "disposition": "HOLD",
+              "route_forward_allowed": true
+            },
+            "sinew": {
+              "edge_id": "sinew-edge-v0:88c86489be84b3491f5652ad692bc05d4aa8de4a7feeb969bc74fe5909a4cf31",
+              "decision": "HOLD",
+              "actor": "local operator",
+              "scope": "bounded-relation-evidence",
+              "authority": "destination-local-relation-only"
+            }
+          },
+          "receipt_id": "relatte-receipt-v0:bb4d10b1729813c0ebc583d40032fb4978ef7ab50b8c739b99771f77e66ae5af",
+          "signing": {
+            "algorithm": "ECDSA-P256-SHA256",
+            "public_key": {
+              "kty": "EC",
+              "crv": "P-256",
+              "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+              "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+            },
+            "signature": "NsSWBuuFLscMAF38YIMw4k2RlkVZJmpSWH7ICcnkDog0HSBLFb-TeUlsJPsk6wNXJBrh9VQIj4q2vfuY7AOQ_g",
+            "domain": "relatte.receipt-signature/v0"
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "mx13:01-witness",
+      "host_id": "WITNESS",
+      "signed_crossing": {
+        "schema": "relatte.crossing-envelope/v0",
+        "protocol_version": "0",
+        "source_particular": "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628",
+        "source_world": "mx13:01-witness",
+        "source_history_head": "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207",
+        "parents": [
+          "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207"
+        ],
+        "declared_kind": "SINEW_PROPOSED_EDGE",
+        "payload_refs": [
+          {
+            "address": "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628",
+            "byte_length": 505,
+            "role": "particular",
+            "media_type": "application/json",
+            "observed_name": "proposed-edge.json"
+          }
+        ],
+        "requested_effect": {
+          "destination_disposition": "local"
+        },
+        "capability_ref": null,
+        "privacy_policy": null,
+        "audience_policy": {
+          "destination": "mx13:02-gate"
+        },
+        "return_address": "mx13:01-witness",
+        "created_at": "2026-10-07T03:18:57.070Z",
+        "extensions": {
+          "sinew": {
+            "edge_id": "sinew-edge-v0:313168f2658613411099879bdf510e915b4c95d29ee31e3b0ab628c7aafb6a3f",
+            "proposal_is_not_acceptance": true,
+            "parent_receipt": {
+              "schema": "relatte.receipt/v0",
+              "crossing_id": "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62",
+              "world_id": "mx13:01-witness",
+              "receiver_particular": "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5",
+              "kind": "MX13_FORWARD",
+              "semantic_effect": "witness-only",
+              "contract_ref": "maxhinal13.constitution/v0",
+              "pre_state_ref": "relatte-receipt-v0:3ebc94ae7265a7f23a9a221250dbb0ad39dbc10e889a36fdee611edaf9b3ee67",
+              "post_state_ref": null,
+              "descendant_refs": [],
+              "residual_refs": [
+                "sha256:880778bb1d7f68254fd607395bb4618d1bd094c4894666a9777780e585d6adf5"
+              ],
+              "note": "observed attributable arrival; no downstream judgment",
+              "created_at": "2026-10-07T03:18:57.068Z",
+              "extensions": {
+                "mx13": {
+                  "stage": "LOCAL_DISPOSITION",
+                  "disposition": "FORWARD",
+                  "law": "WITNESS != JUDGE",
+                  "route_forward_allowed": true,
+                  "authority": "destination-local-only",
+                  "descendant_specs": []
+                }
+              },
+              "receipt_id": "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207",
+              "signing": {
+                "algorithm": "ECDSA-P256-SHA256",
+                "public_key": {
+                  "kty": "EC",
+                  "crv": "P-256",
+                  "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+                  "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+                },
+                "signature": "JtWksA_uEkYuGc_Hdom8WvFguxTPMO_a5tsfvkyQp9TohZ_msmAAGmBfSK9rM4A3LG35Aojj6dpcfOomCpA18A",
+                "domain": "relatte.receipt-signature/v0"
+              }
+            }
+          }
+        },
+        "crossing_id": "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "t2BpsdUK704CT-YbLBQfc_EzbomjYdECMJ_cyizXUXkU1TA7pwoOF8-Np4EfagBKOg8KVJpWgm_d7wnrwpUrjQ",
+          "domain": "relatte.crossing-signature/v0"
+        }
+      },
+      "signed_hold": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+        "world_id": "mx13:02-gate",
+        "receiver_particular": "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628",
+        "kind": "MX13_HOLD",
+        "semantic_effect": "none",
+        "contract_ref": "maxhinal13.constitution/v0",
+        "pre_state_ref": "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+        "post_state_ref": "mx13:hold:relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628"
+        ],
+        "note": "RECEIVE -> HOLD; destination disposition is null",
+        "created_at": "2026-10-07T03:18:57.073Z",
+        "extensions": {
+          "mx13": {
+            "stage": "HOLD",
+            "destination_disposition": null,
+            "mandatory_hold": true,
+            "authority": "none"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:6dd89b68786ae4d70f70d2007dc0d181565652a65fc561da08183e9d6a3488a7",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+            "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+          },
+          "signature": "-qCSLYNkRCFfwJEU3Xg4DMckyo1-lDmS7tZvQYJZJ5A7oapNTHrBQGdIp1CQuMh2AGAU80FpWgibqT3-8jPYeg",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "signed_disposition": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+        "world_id": "mx13:02-gate",
+        "receiver_particular": "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628",
+        "kind": "MX13_ADMIT",
+        "semantic_effect": "destination-local-relation-only",
+        "contract_ref": "SINEW-001",
+        "pre_state_ref": "relatte-receipt-v0:6dd89b68786ae4d70f70d2007dc0d181565652a65fc561da08183e9d6a3488a7",
+        "post_state_ref": null,
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628"
+        ],
+        "note": "explicit destination operator decision; actor declaration is not identity authentication",
+        "created_at": "2026-10-07T03:18:57.075Z",
+        "extensions": {
+          "mx13": {
+            "stage": "LOCAL_DISPOSITION",
+            "disposition": "ADMIT",
+            "route_forward_allowed": true
+          },
+          "sinew": {
+            "edge_id": "sinew-edge-v0:313168f2658613411099879bdf510e915b4c95d29ee31e3b0ab628c7aafb6a3f",
+            "decision": "ACCEPT",
+            "actor": "destination operator",
+            "scope": "bounded-relation-evidence",
+            "authority": "destination-local-relation-only"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+            "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+          },
+          "signature": "O_uYRTrrwiTDxOdzKpbEQJNXcPPMb7vNACu9l4kmmiOnIRvysxbRqW6jq-Sw4FuImGKqu9V2NL6tijbyrM3Frg",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "attempts": [
+        {
+          "ok": false,
+          "error": "DESTINATION_REMAINS_HELD",
+          "at": "2026-10-07T03:18:57.075Z"
+        },
+        {
+          "ok": true,
+          "at": "2026-10-07T03:18:57.080Z"
+        }
+      ],
+      "relation_observations": []
+    },
+    {
+      "node_id": "mx13:02-gate",
+      "host_id": "pantry-gate",
+      "signed_crossing": {
+        "schema": "relatte.crossing-envelope/v0",
+        "protocol_version": "0",
+        "source_particular": "sha256:98519a9032c80a6bd34a38dc815f44fc03d9bd329d59ce568cf892506d17943c",
+        "source_world": "mx13:02-gate",
+        "source_history_head": "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab",
+        "parents": [
+          "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab"
+        ],
+        "declared_kind": "SINEW_PROPOSED_EDGE",
+        "payload_refs": [
+          {
+            "address": "sha256:98519a9032c80a6bd34a38dc815f44fc03d9bd329d59ce568cf892506d17943c",
+            "byte_length": 486,
+            "role": "particular",
+            "media_type": "application/json",
+            "observed_name": "proposed-edge.json"
+          }
+        ],
+        "requested_effect": {
+          "destination_disposition": "local"
+        },
+        "capability_ref": null,
+        "privacy_policy": null,
+        "audience_policy": {
+          "destination": "mx13:01-witness"
+        },
+        "return_address": "mx13:02-gate",
+        "created_at": "2026-10-07T03:18:57.080Z",
+        "extensions": {
+          "sinew": {
+            "edge_id": "sinew-edge-v0:ff169cdf1b8701e27916919b6f7b3133221b4de4c4aa3a54773d9dac31f88357",
+            "proposal_is_not_acceptance": true,
+            "parent_receipt": {
+              "schema": "relatte.receipt/v0",
+              "crossing_id": "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+              "world_id": "mx13:02-gate",
+              "receiver_particular": "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628",
+              "kind": "MX13_ADMIT",
+              "semantic_effect": "destination-local-relation-only",
+              "contract_ref": "SINEW-001",
+              "pre_state_ref": "relatte-receipt-v0:6dd89b68786ae4d70f70d2007dc0d181565652a65fc561da08183e9d6a3488a7",
+              "post_state_ref": null,
+              "descendant_refs": [],
+              "residual_refs": [
+                "sha256:df7ec04a852ab2b2cac3d85a067d470a3a1a7f93f475b4b62385fa9c62eea628"
+              ],
+              "note": "explicit destination operator decision; actor declaration is not identity authentication",
+              "created_at": "2026-10-07T03:18:57.075Z",
+              "extensions": {
+                "mx13": {
+                  "stage": "LOCAL_DISPOSITION",
+                  "disposition": "ADMIT",
+                  "route_forward_allowed": true
+                },
+                "sinew": {
+                  "edge_id": "sinew-edge-v0:313168f2658613411099879bdf510e915b4c95d29ee31e3b0ab628c7aafb6a3f",
+                  "decision": "ACCEPT",
+                  "actor": "destination operator",
+                  "scope": "bounded-relation-evidence",
+                  "authority": "destination-local-relation-only"
+                }
+              },
+              "receipt_id": "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab",
+              "signing": {
+                "algorithm": "ECDSA-P256-SHA256",
+                "public_key": {
+                  "kty": "EC",
+                  "crv": "P-256",
+                  "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+                  "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+                },
+                "signature": "O_uYRTrrwiTDxOdzKpbEQJNXcPPMb7vNACu9l4kmmiOnIRvysxbRqW6jq-Sw4FuImGKqu9V2NL6tijbyrM3Frg",
+                "domain": "relatte.receipt-signature/v0"
+              }
+            }
+          }
+        },
+        "crossing_id": "relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Ry9puPmvCfL_xK6EdlI3i8jH2mBDkywanjO77eAWzu0",
+            "y": "3w_pQEBZJSEGzPyN5Rf_gTxzxPG6DOJjbYH3VCAfSzE"
+          },
+          "signature": "zVp9FZv7UKEA-6OWQr_bBRzgt6gXpylkAfpFyle41lVrIJQmkjFEAF8akhbfazYF_PlM7wcfZI2gm2dgVqDXvQ",
+          "domain": "relatte.crossing-signature/v0"
+        }
+      },
+      "signed_hold": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+        "world_id": "mx13:01-witness",
+        "receiver_particular": "sha256:98519a9032c80a6bd34a38dc815f44fc03d9bd329d59ce568cf892506d17943c",
+        "kind": "MX13_HOLD",
+        "semantic_effect": "none",
+        "contract_ref": "maxhinal13.constitution/v0",
+        "pre_state_ref": "relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+        "post_state_ref": "mx13:hold:relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:98519a9032c80a6bd34a38dc815f44fc03d9bd329d59ce568cf892506d17943c"
+        ],
+        "note": "RECEIVE -> HOLD; destination disposition is null",
+        "created_at": "2026-10-07T03:18:57.084Z",
+        "extensions": {
+          "mx13": {
+            "stage": "HOLD",
+            "destination_disposition": null,
+            "mandatory_hold": true,
+            "authority": "none"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:223b1453cd8dd3605c88e3395e2c2b07d9557cef342fc3c3a78fb9a9deafe08c",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "v8IeN95L6qE3Ph8zEatroeKJEIGbSrx3DLN7UehMeOLlfiFDRjgZazUKmlgLPzs7pBVn86VxVprDzLWbSU6bCg",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "signed_disposition": {
+        "schema": "relatte.receipt/v0",
+        "crossing_id": "relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+        "world_id": "mx13:01-witness",
+        "receiver_particular": "sha256:98519a9032c80a6bd34a38dc815f44fc03d9bd329d59ce568cf892506d17943c",
+        "kind": "MX13_FORWARD",
+        "semantic_effect": "destination-local-relation-only",
+        "contract_ref": "SINEW-001",
+        "pre_state_ref": "relatte-receipt-v0:223b1453cd8dd3605c88e3395e2c2b07d9557cef342fc3c3a78fb9a9deafe08c",
+        "post_state_ref": null,
+        "descendant_refs": [],
+        "residual_refs": [
+          "sha256:98519a9032c80a6bd34a38dc815f44fc03d9bd329d59ce568cf892506d17943c"
+        ],
+        "note": "explicit destination operator decision; actor declaration is not identity authentication",
+        "created_at": "2026-10-07T03:18:57.092Z",
+        "extensions": {
+          "mx13": {
+            "stage": "LOCAL_DISPOSITION",
+            "disposition": "FORWARD",
+            "route_forward_allowed": true
+          },
+          "sinew": {
+            "edge_id": "sinew-edge-v0:ff169cdf1b8701e27916919b6f7b3133221b4de4c4aa3a54773d9dac31f88357",
+            "decision": "ACCEPT",
+            "actor": "witness operator",
+            "scope": "bounded-relation-evidence",
+            "authority": "destination-local-relation-only"
+          }
+        },
+        "receipt_id": "relatte-receipt-v0:b2be50ee3580866f30fd1046c4aebcc093d1371e303ce34cf39cf383e3f1088f",
+        "signing": {
+          "algorithm": "ECDSA-P256-SHA256",
+          "public_key": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "Vff_QM-_fC7eCv224ZpfR2Ga8nW1WoQTuTxPgptXLRk",
+            "y": "2mMhz96wHpdyQ2Ub170ek8Jmc0msPNuP_N3upCoN9sk"
+          },
+          "signature": "wSWi5I2BU-n0PeNNEoDLQ0ApXYEAMaI3DmjVsVAkiN_M1VbfZ2DuI292lwauygYDfzTBLvVargA9mSoQiw4fjQ",
+          "domain": "relatte.receipt-signature/v0"
+        }
+      },
+      "attempts": [
+        {
+          "ok": false,
+          "error": "DESTINATION_REMAINS_HELD",
+          "at": "2026-10-07T03:18:57.091Z"
+        },
+        {
+          "ok": true,
+          "at": "2026-10-07T03:18:57.095Z"
+        }
+      ],
+      "relation_observations": []
+    }
+  ],
+  "fingerprints": {
+    "mx13:01-witness": "sha256:ed10c4a12c6a6c07b51b90794bf163278b4c5c0467a8cdcf415cd6588af42aac",
+    "mx13:02-gate": "sha256:1bc938acacd6c5cbda272f99ec9b95bbce4abdb6d1e7a232d1ea6f776acfbab7"
+  },
+  "replay": {
+    "verified_crossings": 4,
+    "verified_holds": 4,
+    "verified_dispositions": 4,
+    "unresolved": [],
+    "ancestry": {
+      "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207": [
+        "relatte-receipt-v0:3ebc94ae7265a7f23a9a221250dbb0ad39dbc10e889a36fdee611edaf9b3ee67",
+        "relatte-crossing-v0:7970282cd6d393c9566da56d7297759223ee8bf8b788f962ed431d03643a4e62"
+      ],
+      "relatte-receipt-v0:bb4d10b1729813c0ebc583d40032fb4978ef7ab50b8c739b99771f77e66ae5af": [
+        "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+        "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2"
+      ],
+      "relatte-receipt-v0:61b8db13d9db230c7945902002c722199e753469b1509d7a162f9f63d72f81dd": [
+        "relatte-receipt-v0:9a776bc9f3c8304e871e52318234ad3abeaf1a96404af95573df1d86aba7cb8d",
+        "relatte-crossing-v0:fe8e6cb9e0815c07b2d81879f58f30c08bd052fc1a6c35eb59d24a68369e09c2"
+      ],
+      "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab": [
+        "relatte-receipt-v0:6dd89b68786ae4d70f70d2007dc0d181565652a65fc561da08183e9d6a3488a7",
+        "relatte-crossing-v0:12bd34d682c62dce758a4dc27b00d4baa20c9ac2803effffd9c32d31565247da",
+        "relatte-receipt-v0:9dd95d7fe552fcbdbb32492ed7a4c03667cf6c9a38ba6e17a1d473c388e1b207"
+      ],
+      "relatte-receipt-v0:b2be50ee3580866f30fd1046c4aebcc093d1371e303ce34cf39cf383e3f1088f": [
+        "relatte-receipt-v0:223b1453cd8dd3605c88e3395e2c2b07d9557cef342fc3c3a78fb9a9deafe08c",
+        "relatte-crossing-v0:177be5bd1dc3f986acef6efc4e8fcd4d35b29f778b5c743c8049b123884b00ad",
+        "relatte-receipt-v0:f834adfd01b445375c9c686fedacd7967f04a7d8cf2ead39c83c3a8f38fe67ab"
+      ]
+    },
+    "live_two_host_proven": false,
+    "live_thirteen_node_proven": false,
+    "source_bytes_rehashed": false
+  },
+  "claims": {
+    "local_simulation": true,
+    "live_two_host": false,
+    "live_thirteen_node": false,
+    "pulse_observed": false,
+    "host_outage_tested": false
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "maxhinal13.reviewed-deployment/v0",
+  "observed_at": "2026-10-07",
+  "source_commit": "e16ddfe",
+  "method": "Existing project-scoped Supabase management connection; no operator capability or private key transferred",
+  "deployments": [
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "name": "mx13-genesis",
+      "id": "9170ae41-d942-4aa3-93ec-589a907a4e4d",
+      "version": 3,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "f9e747cfa8f4f0c0395d42aa1f6856f63b0daad76d51b643b1c98fae0ae41b82"
+    },
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "name": "mx13-ingress",
+      "id": "4343ff06-e4c8-45df-94e9-a284cc5c423d",
+      "version": 1,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "50a2e8c41b339c57663c56f5021a5210c85510cd76baf3f795cad9f8856753a0"
+    },
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "name": "mx13-worker",
+      "id": "cb8dbc1d-e6bc-4d36-857a-b5d6af252598",
+      "version": 1,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "362c29a22b2d9c0357132b924bfe896800e41bfd82577f4fbfa72138464540ff"
+    },
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "name": "mx13-status",
+      "id": "9030dfb1-8ff8-4237-989a-c5c1245924e8",
+      "version": 1,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "bundle_sha256": "05b45f595f4da23e981413edf59d64e7702f57e142084b706632ce9019c985c3"
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "name": "mx13-genesis",
+      "id": "d9b2fbfd-56f6-411c-bde8-8a9284f2ca07",
+      "version": 3,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "f9e747cfa8f4f0c0395d42aa1f6856f63b0daad76d51b643b1c98fae0ae41b82"
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "name": "mx13-ingress",
+      "id": "878c365e-fbcd-4ac7-93b3-80d4756c0ace",
+      "version": 1,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "50a2e8c41b339c57663c56f5021a5210c85510cd76baf3f795cad9f8856753a0"
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "name": "mx13-worker",
+      "id": "de88c739-473d-41ec-a5fd-8c8903dfaac7",
+      "version": 1,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "362c29a22b2d9c0357132b924bfe896800e41bfd82577f4fbfa72138464540ff"
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "name": "mx13-status",
+      "id": "531612cb-7851-445e-8a52-f26954647a07",
+      "version": 1,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "bundle_sha256": "05b45f595f4da23e981413edf59d64e7702f57e142084b706632ce9019c985c3"
+    }
+  ],
+  "live_crossing_claim": false
+}
