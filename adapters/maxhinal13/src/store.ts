@@ -281,7 +281,7 @@ export class PostgresMeshStore implements MeshStore {
     if(!inbound&&!outbound)throw Error('CROSSING_NOT_OBSERVED');
     const rows=await this.sql.unsafe(`select body from ${schema}.constitution_events where crossing_id=$1 and class='transport-acknowledgement'`,[crossing]);
     const held=await this.sql.unsafe(`select body from ${schema}.constitution_events where crossing_id=$1 and class='transport-hold-acknowledgement'`,[crossing]);
-    const observations=await this.sql.unsafe(`select r.body from ${schema}.constitution_events e join ${schema}.receipts r on r.receipt_id=e.body->>'receipt_id' where e.crossing_id=$1 and e.class='edge-disposition' order by e.created_at,e.event_id`,[crossing]);
+    const observations=await this.sql.unsafe(`select r.body from ${schema}.constitution_events e join ${schema}.receipts r on r.receipt_id=e.body->>'receipt_id' where e.crossing_id=$1 and e.class='edge-disposition' and r.kind='MX13_EDGE_HOLD' order by e.created_at,e.event_id`,[crossing]);
     const holdId=inbound?.holdReceiptId??rows[0]?.body.hold_receipt_id??held[0]?.body.receipt_id;
     const dispId=inbound?.dispositionReceiptId??rows[0]?.body.disposition_receipt_id;
     return {node_id:node,host_id:this.hostId,signed_crossing:inbound?.envelope??outbound!.envelope,

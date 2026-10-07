@@ -64,3 +64,20 @@ export async function replayTraces(traces:TransportTrace[],fingerprints:Record<s
  }
  return report;
 }
+
+/** Compare independently fetched source and destination custody before onward dispatch. */
+export async function verifyHopHistories(
+ expected:{crossing_id:string;source_node:string;destination_node:string;particular?:string},
+ source:TransportTrace,destination:TransportTrace,prior:TransportTrace[],fingerprints:Record<string,string>,
+):Promise<ReplayReport>{
+ if(source.node_id!==expected.source_node)throw Error('HOP_SOURCE_CUSTODY_REQUIRED');
+ if(destination.node_id!==expected.destination_node)throw Error('HOP_DESTINATION_CUSTODY_REQUIRED');
+ for(const trace of [source,destination]){
+  const crossing=trace.signed_crossing;
+  if(crossing.crossing_id!==expected.crossing_id||crossing.source_world!==expected.source_node||
+    crossing.audience_policy?.destination!==expected.destination_node)throw Error('HOP_CROSSING_MISMATCH');
+  if(expected.particular!==undefined&&crossing.source_particular!==expected.particular)throw Error('HOP_PARTICULAR_MISMATCH');
+  if(!trace.signed_hold||!trace.signed_disposition)throw Error('HOP_HISTORY_UNRESOLVED');
+ }
+ return replayTraces([...prior,source,destination],fingerprints);
+}

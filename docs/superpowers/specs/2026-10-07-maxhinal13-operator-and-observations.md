@@ -14,7 +14,7 @@ Use existing private Postgres receipt, event and ancestry tables; persist verifi
 
 All node-local SQL paths check the assigned host and logical node before selecting a schema or key. Source-owned receipts cannot mutate a sibling's world. Hosted Postgres uses pinned Postgres.js with `prepare:false` for transaction pooler compatibility.
 
-A protected read-only trace exports public signed bodies and safe attempt codes. Fresh-process replay verifies signatures, exact address binding, destination custody, mandatory HOLD, disposition order, parent scope and parent observation. It does not contact hosts, need pulses, claim original-byte rehash, or infer LIVE transport. Every duplicate is verified, even when it repeats an already counted receipt ID. Contradictory current snapshots are refused rather than silently merged.
+A protected read-only trace exports public signed bodies and safe attempt codes. Fresh-process replay verifies signatures, exact address binding, destination custody, mandatory HOLD, disposition order, parent scope and parent observation. It does not contact hosts, need pulses, claim original-byte rehash, or infer LIVE transport. Every duplicate is verified, even when it repeats an already counted receipt ID. Each live operator hop also requires separate host-local source and destination trace fetches bound to its expected crossing ID, worlds and particular before onward dispatch. Transport acknowledgement custody cannot substitute for independently fetched destination history. Trace relation observations contain only intermediate HOLD decisions; terminal ACCEPT/REFUSE is exported separately as the signed disposition. Contradictory current snapshots are refused rather than silently merged.
 
 ## SINEW
 

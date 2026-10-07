@@ -7,7 +7,7 @@ import {PINNED_PROJECT_REFS,validateIdentityBundle,type HostId} from '../src/pee
 import {operatorPlan,FUNCTIONS} from '../src/operator-plan.ts';
 import {sanitizePublicStatus} from '../src/status.ts';
 import {NODE_DEFINITIONS} from '../src/nodes.ts';
-import {replayTraces} from '../src/trace-replay.ts';
+import {replayTraces,verifyHopHistories} from '../src/trace-replay.ts';
 import type {TransportTrace} from '../src/store.ts';
 
 const hosts=Object.keys(PINNED_PROJECT_REFS) as HostId[];
@@ -110,6 +110,7 @@ async function bootstrap(){
 async function route(full:boolean){
  const bytes=await Deno.readFile(required('MX13_INVITATION_PATH'));
  if(bytes.length!==670478||createHash('sha256').update(bytes).digest('hex')!=='af82b9a3b2d5eeb1ce3d58038b3415ca62f0815bd6f0a04662ec8cf5b773d171')throw Error('INVITATION_PARTICULAR_MISMATCH');
+ const particular='sha256:'+createHash('sha256').update(bytes).digest('hex');
  const fingerprints=await publicIdentity();
  return withCapabilities(async call=>{
   const traces:TransportTrace[]=[];const observed:any[]=[];
@@ -119,16 +120,19 @@ async function route(full:boolean){
   const total=full?13:3;
   for(let i=0;i<total;i++){
    const source=i===0?NODE_DEFINITIONS[0]:i===2&&!full?NODE_DEFINITIONS[1]:NODE_DEFINITIONS[i-1];
-   if(i>0){const dest=!full&&i===2?NODE_DEFINITIONS[0]:NODE_DEFINITIONS[i];
+   const dest=i===0?NODE_DEFINITIONS[0]:!full&&i===2?NODE_DEFINITIONS[0]:NODE_DEFINITIONS[i];
+   if(i>0){
     const next=await invoke(source.host,{schema:'maxhinal13.worker/v0',action:!full&&i===2?'probe-return':'advance',
       source_node_id:source.id,next_node_id:dest.id,inbound_crossing_id:crossing});crossing=next.crossing_id;}
    const result=await invoke(source.host,{schema:'maxhinal13.worker/v0',action:'pump',source_node_id:source.id});
    if(!result.ok||result.crossing_id!==crossing)throw Error('ROUTE_STOPPED_UNVERIFIED_PRIOR_HOP');
    const trace=await invoke(source.host,{schema:'maxhinal13.worker/v0',action:'trace',source_node_id:source.id,inbound_crossing_id:crossing});
-   traces.push(trace);await replayTraces(traces,fingerprints); // No advancement without verified prior receipts.
+   const destinationTrace=await invoke(dest.host,{schema:'maxhinal13.worker/v0',action:'trace',source_node_id:dest.id,inbound_crossing_id:crossing});
+   await verifyHopHistories({crossing_id:crossing,source_node:source.id,destination_node:dest.id,particular},trace,destinationTrace,traces,fingerprints);
+   traces.push(trace,destinationTrace); // No advancement without both independently fetched custody histories.
   }
   const replay=await replayTraces(traces,fingerprints);
-  const evidence={schema:'maxhinal13.operator-https-observation/v0',observed_at:new Date().toISOString(),fingerprints,traces,observed,replay,
+  const evidence={schema:'maxhinal13.operator-https-observation/v0',independent_host_histories_verified:true,observed_at:new Date().toISOString(),fingerprints,traces,observed,replay,
     claims:{local_simulation:false,live_two_host:true,live_thirteen_node:full,pulse_observed:false,host_outage_tested:false},
     claim_limit:'operator observed actual pinned HTTPS plus host-local signed receipts; replay alone is not network observation'};
   const output=resolve(required('MX13_EVIDENCE_OUTPUT'));
@@ -153,13 +157,15 @@ async function sinew(){
    const returned=await invoke(source.host,{schema:'maxhinal13.worker/v0',action:'pump',source_node_id:source.id});
    if(!returned.ok||returned.crossing_id!==proposal.crossing_id)throw Error('SINEW_STOPPED_UNVERIFIED_RETURN');
    const trace=await invoke(source.host,{schema:'maxhinal13.worker/v0',action:'trace',source_node_id:source.id,inbound_crossing_id:proposal.crossing_id});
-   traces.push(trace);await replayTraces(traces,fingerprints);return trace.signed_disposition.receipt_id;
+   const destinationTrace=await invoke(dest.host,{schema:'maxhinal13.worker/v0',action:'trace',source_node_id:dest.id,inbound_crossing_id:proposal.crossing_id});
+   await verifyHopHistories({crossing_id:proposal.crossing_id,source_node:source.id,destination_node:dest.id},trace,destinationTrace,traces,fingerprints);
+   traces.push(trace,destinationTrace);return trace.signed_disposition.receipt_id;
   };
   const a=NODE_DEFINITIONS[0],b=NODE_DEFINITIONS[1];
   await perform(a,b,null,'REFUSE','Explicitly refused unpedigreed relation; no implicit ancestry');
   const accepted=await perform(a,b,root.signed_disposition.receipt_id,'ACCEPT','Bounded proposal linked to witnessed local parent');
   await perform(b,a,accepted,'ACCEPT','Return attributable relation without conferring admission authority');
-  const evidence={schema:'maxhinal13.sinew-https-observation/v0',observed_at:new Date().toISOString(),traces,fingerprints,observations,
+  const evidence={schema:'maxhinal13.sinew-https-observation/v0',independent_host_histories_verified:true,observed_at:new Date().toISOString(),traces,fingerprints,observations,
    replay:await replayTraces(traces,fingerprints),claims:{sinew_two_host:true,live_thirteen_node:false,pulse_observed:false,host_outage_tested:false}};
   const output=resolve(required('MX13_EVIDENCE_OUTPUT'));await Deno.writeTextFile(output,JSON.stringify(evidence,null,2)+'\n',{mode:0o600,createNew:true});
   return {status:'PASS',evidence_path:output,claims:evidence.claims};

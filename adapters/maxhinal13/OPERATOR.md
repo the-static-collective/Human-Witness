@@ -82,7 +82,7 @@ Set a new `MX13_EVIDENCE_OUTPUT` for each command in protected configuration. Th
 deno run --no-prompt --frozen --config deno.json --allow-env --allow-net --allow-read --allow-write scripts/operator.ts two-host
 ```
 
-The route first seeds signed **01→01** and verifies mandatory HOLD plus Witness's local FORWARD. It then runs actual **01→02→01 HTTPS**. The source worker calls the destination host ingress directly; the operator calls fixed host workers. Every returned HOLD/disposition is verified and persisted before COMPLETE, and replay runs before the next hop. A network error leaves PENDING with safe attempt evidence; rerun requires deliberate outbox inspection rather than inventing a receipt.
+The route first seeds signed **01→01** and verifies mandatory HOLD plus Witness's local FORWARD. It then runs actual **01→02→01 HTTPS**. The source worker calls the destination host ingress directly; the operator calls fixed host workers. Every returned HOLD/disposition is verified and persisted before COMPLETE. The operator then independently fetches source and destination durable traces from their own host workers, binds both to the expected crossing/worlds/exact particular, compares their signed receipts, and cold-verifies their combined ancestry before advancing. A sender acknowledgement alone cannot substitute for destination history. A network error leaves PENDING with safe attempt evidence; rerun requires deliberate outbox inspection rather than inventing a receipt.
 
 After that succeeds, with a separate output path:
 
@@ -98,7 +98,7 @@ For the independently played relation ceremony, point `MX13_PARENT_TRACE_PATH` a
 deno run --no-prompt --frozen --config deno.json --allow-env --allow-net --allow-read --allow-write scripts/operator.ts sinew
 ```
 
-It sends an unpedigreed **01→02** proposal, explicitly REFUSEs it at Gate, sends a **new** proposal with a verified Witness-local parent, explicitly ACCEPTs at Gate, then proposes **02→01** and explicitly ACCEPTs within Witness's narrower FORWARD-only constitution. Relation JSON is a new particular, not the original image. Proposal dispatch initially returns only HOLD; acceptance/refusal never automatically executes a next hop. Signed source-local parent proof is carried publicly so a bare invented reference cannot bypass Gate policy.
+It verifies independently fetched source and destination history for every completed relation hop. It sends an unpedigreed **01→02** proposal, explicitly REFUSEs it at Gate, sends a **new** proposal with a verified Witness-local parent, explicitly ACCEPTs at Gate, then proposes **02→01** and explicitly ACCEPTs within Witness's narrower FORWARD-only constitution. Relation JSON is a new particular, not the original image. Proposal dispatch initially returns only HOLD; acceptance/refusal never automatically executes a next hop. Signed source-local parent proof is carried publicly so a bare invented reference cannot bypass Gate policy.
 
 ## 5. Cold replay, negative probes, and free-plan breath
 
