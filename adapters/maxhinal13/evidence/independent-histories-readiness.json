@@ -1,0 +1,45 @@
+{
+  "schema": "maxhinal13.independent-histories-readiness/v0",
+  "observed_at": "2026-10-07",
+  "source_commit": "ff0826a",
+  "tests": {
+    "total": 78,
+    "passed": 71,
+    "skipped": 7,
+    "failed": 0
+  },
+  "frozen_deno_check": true,
+  "noninteractive_two_host_dry_run_without_env_or_network_permission": true,
+  "source_and_destination_history_comparison_required": true,
+  "intermediate_hold_query_validated_on_both_postgres_hosts": true,
+  "worker_deployments": [
+    {
+      "project_id": "edxoiynjspjtxjauxhlz",
+      "name": "mx13-worker",
+      "version": 2,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "910e0077fee1a1bdc9b3ae47bac26b122736c10b9412fb357cf9ec73bf734cec"
+    },
+    {
+      "project_id": "kbhqacsdvjsstzyplqij",
+      "name": "mx13-worker",
+      "version": 2,
+      "status": "ACTIVE",
+      "verify_jwt": false,
+      "bundle_sha256": "910e0077fee1a1bdc9b3ae47bac26b122736c10b9412fb357cf9ec73bf734cec"
+    }
+  ],
+  "bootstrap_executed": false,
+  "live_two_host_earned": false,
+  "live_thirteen_node_earned": false,
+  "preflight": {
+    "operator_environment_configured": false,
+    "exact_original_image_found": false,
+    "archives_inspected": 4,
+    "github_issue_comments_checked": 0,
+    "each_host_node_keys": 0,
+    "each_host_public_peers": 0,
+    "each_host_active_unexpired_caps": 0
+  }
+}

@@ -4,7 +4,7 @@ Only WITNESS `edxoiynjspjtxjauxhlz` and pantry-gate `kbhqacsdvjsstzyplqij` are t
 
 ## Current boundary and the exact next step
 
-The executor has scoped management/read access and applied the additive MAXHINAL hardening migration. It does **not** have an authenticated CLI environment or either host's SQL credentials. The source archive also does not contain the original INVITATION image. The four reviewed functions are now deployed through the existing project-scoped management connection (genesis v3, other functions v1). Authenticated bootstrap, two-host crossing, 13-node crossing, live SINEW, and live PNEUMA have **not** run.
+The executor has scoped management/read access and applied the additive MAXHINAL hardening migration. It does **not** have an authenticated CLI environment or either host's SQL credentials. The source archive also does not contain the original INVITATION image. The four reviewed functions are now deployed through the existing project-scoped management connection (genesis v3, worker v2, ingress/status v1). Authenticated bootstrap, two-host crossing, 13-node crossing, live SINEW, and live PNEUMA have **not** run.
 
 The next step is to run **step 3 (bootstrap)** below inside an already authorized operator environment. Alternatively provide the executor only that environment's configuration location, without putting credentials in chat. Step 4 additionally requires the exact original image. The Constellation Rack visualization remains gated on verified two-host crossing, as issue #4 requires.
 

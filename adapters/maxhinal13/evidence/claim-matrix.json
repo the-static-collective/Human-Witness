@@ -50,7 +50,8 @@
     "each_host_active_operator_caps": 0,
     "genesis_deployed_version": 3,
     "reviewed_replacement_functions_deployed": true,
-    "status_gateway_jwt_verified": true
+    "status_gateway_jwt_verified": true,
+    "worker_deployed_version": 2
   },
   "cold_replay": {
     "earned": true,
